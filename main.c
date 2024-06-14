@@ -1,27 +1,14 @@
 #include "functions.h"
 
 int main(int argc ,char *argv[]) {
-    Player player1;
-    Ship sloop;
+    Player *player1 = createPlayer(10000, "Spieler1");
 
-    Captain c;
+    Captain *c = createCaptain("John Smith", 100, 0);
 
-    strcpy(c.name, "John Smith");
-    c.health = 100;
-    c.experience = 0;
+    addShip(player1, createShip("Sloop", 30, c));
 
-    sloop.captain = &c;
+    printf("%s", player1->fleet[0].type);
 
-    strcpy(sloop.type, "Schaluppe");
-    sloop.crew = 30;
-
-    for(int i = 0; i<12; i++) {
-        if(addShip(&player1, &sloop) == OUT_OF_BOUNDS) {
-            printf("Player already has 10 Ships!\n");
-        }
-    }
-
-    printPlayer(&player1);
 
 
 
